@@ -11,6 +11,7 @@ import com.anhle.models.Customer;
 import com.anhle.models.Entity;
 import com.anhle.models.Ordering;
 import com.anhle.models.Product;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -93,11 +94,10 @@ public class OrderingPanelManager extends javax.swing.JPanel {
         btSortByCcode = new javax.swing.JButton();
         btAdd = new javax.swing.JButton();
         btEdit = new javax.swing.JButton();
-        btSortByPcode = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        btSortByCcode.setText("Sort by Customer Code");
+        btSortByCcode.setText("Sort by Customer Code and Product Code");
         btSortByCcode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSortByCcodeActionPerformed(evt);
@@ -115,13 +115,6 @@ public class OrderingPanelManager extends javax.swing.JPanel {
         btEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEditActionPerformed(evt);
-            }
-        });
-
-        btSortByPcode.setText("Sort by Production Code");
-        btSortByPcode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSortByPcodeActionPerformed(evt);
             }
         });
 
@@ -168,11 +161,9 @@ public class OrderingPanelManager extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btEdit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btSortByCcode)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btSortByPcode)
-                .addContainerGap(62, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+                .addComponent(btSortByCcode, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,8 +172,7 @@ public class OrderingPanelManager extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEdit)
                     .addComponent(btAdd)
-                    .addComponent(btSortByCcode)
-                    .addComponent(btSortByPcode))
+                    .addComponent(btSortByCcode))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE))
         );
@@ -196,12 +186,10 @@ public class OrderingPanelManager extends javax.swing.JPanel {
     }//GEN-LAST:event_btAddActionPerformed
 
     private void btSortByCcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSortByCcodeActionPerformed
-        // TODO add your handling code here:
+        Helper.quicksort(entities.orderings);
+        loadDataToTable();
+        JOptionPane.showMessageDialog(this,"success");
     }//GEN-LAST:event_btSortByCcodeActionPerformed
-
-    private void btSortByPcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSortByPcodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btSortByPcodeActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
         // TODO add your handling code here:
@@ -216,7 +204,6 @@ public class OrderingPanelManager extends javax.swing.JPanel {
     private javax.swing.JButton btAdd;
     private javax.swing.JButton btEdit;
     private javax.swing.JButton btSortByCcode;
-    private javax.swing.JButton btSortByPcode;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

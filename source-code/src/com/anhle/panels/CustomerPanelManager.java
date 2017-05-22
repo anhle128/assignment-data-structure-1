@@ -5,9 +5,12 @@
  */
 package com.anhle.panels;
 
+import com.anhle.commons.Helper;
 import com.anhle.forms.CustomerFormEditor;
 import com.anhle.models.Customer;
 import com.anhle.models.Entity;
+import com.anhle.models.Product;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -75,10 +78,10 @@ public class CustomerPanelManager extends javax.swing.JPanel {
         btEdit = new javax.swing.JButton();
         txtSreachByCcode = new javax.swing.JTextField();
         btSreachByCcode = new javax.swing.JButton();
-        txtDeleteByCcode = new javax.swing.JTextField();
         btSreachByCcode1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btSort = new javax.swing.JButton();
 
         btAdd.setText("Add");
         btAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -101,8 +104,18 @@ public class CustomerPanelManager extends javax.swing.JPanel {
         });
 
         btSreachByCcode.setText("Sreach by Code");
+        btSreachByCcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSreachByCcodeActionPerformed(evt);
+            }
+        });
 
         btSreachByCcode1.setText("Delete by Code");
+        btSreachByCcode1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSreachByCcode1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,6 +150,13 @@ public class CustomerPanelManager extends javax.swing.JPanel {
             jTable1.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        btSort.setText("Sort by Code");
+        btSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSortActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,22 +165,19 @@ public class CustomerPanelManager extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btAdd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btEdit))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtSreachByCcode, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btSreachByCcode)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btSort, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtDeleteByCcode, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSreachByCcode, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btSreachByCcode1)
-                        .addContainerGap(115, Short.MAX_VALUE))))
-            .addComponent(jScrollPane1)
+                        .addComponent(btSreachByCcode)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btSreachByCcode1)))
+                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,17 +185,16 @@ public class CustomerPanelManager extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEdit)
-                    .addComponent(btAdd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSreachByCcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btSreachByCcode))
+                    .addComponent(btAdd)
+                    .addComponent(btSort))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDeleteByCcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btSreachByCcode1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSreachByCcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btSreachByCcode)
+                        .addComponent(btSreachByCcode1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -201,15 +217,45 @@ public class CustomerPanelManager extends javax.swing.JPanel {
         editor.setVisible(true);
     }//GEN-LAST:event_btEditActionPerformed
 
+    private void btSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSortActionPerformed
+        Helper.quicksort(entities.products);
+        loadDataToTable();
+        JOptionPane.showMessageDialog(this,"success");
+    }//GEN-LAST:event_btSortActionPerformed
+
+    private void btSreachByCcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSreachByCcodeActionPerformed
+        // TODO add your handling code here:
+        
+        String code = txtSreachByCcode.getText();
+        int result = Helper.binarysreach(entities.customers, new Customer(code));
+        if(result != -1){
+             jTable1.getSelectionModel().setSelectionInterval(0, result);
+            JOptionPane.showMessageDialog(this,"success");
+        }else{
+            JOptionPane.showMessageDialog(this,"can't find production");
+        }
+    }//GEN-LAST:event_btSreachByCcodeActionPerformed
+
+    private void btSreachByCcode1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSreachByCcode1ActionPerformed
+       String code = txtSreachByCcode.getText();
+        int result = Helper.binarysreach(entities.customers, new Customer(code));
+        if(result != -1){
+            entities.customers.remove(result);
+            JOptionPane.showMessageDialog(this,"success");
+        }else{
+            JOptionPane.showMessageDialog(this,"can't find production");
+        }
+    }//GEN-LAST:event_btSreachByCcode1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdd;
     private javax.swing.JButton btEdit;
+    private javax.swing.JButton btSort;
     private javax.swing.JButton btSreachByCcode;
     private javax.swing.JButton btSreachByCcode1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtDeleteByCcode;
     private javax.swing.JTextField txtSreachByCcode;
     // End of variables declaration//GEN-END:variables
 

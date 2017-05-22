@@ -20,29 +20,23 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="btAdd" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btEdit" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="txtSreachByCcode" min="-2" pref="293" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btSreachByCcode" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btEdit" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btSort" min="-2" pref="158" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="txtDeleteByCcode" min="-2" pref="293" max="-2" attributes="0"/>
+                      <Component id="txtSreachByCcode" min="-2" pref="293" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btSreachByCcode" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btSreachByCcode1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="115" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
           </Group>
-          <Component id="jScrollPane1" max="32767" attributes="0"/>
+          <Component id="jScrollPane1" pref="602" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -52,19 +46,18 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btAdd" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtSreachByCcode" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btSreachByCcode" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btSort" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtDeleteByCcode" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btSreachByCcode1" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtSreachByCcode" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="btSreachByCcode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btSreachByCcode1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="283" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="318" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,13 +88,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Sreach by Code"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDeleteByCcode">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSreachByCcodeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btSreachByCcode1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete by Code"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSreachByCcode1ActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -145,5 +142,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btSort">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sort by Code"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSortActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

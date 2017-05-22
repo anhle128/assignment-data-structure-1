@@ -19,7 +19,11 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
@@ -158,7 +162,11 @@ public class App extends javax.swing.JFrame {
         int result = fileChooser.showSaveDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
-            FileManager.SaveData(fileToSave.getAbsolutePath(), entities);
+           try {
+               FileManager.SaveData(fileToSave.getAbsolutePath(), entities);
+           } catch (IOException ex) {
+               Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+           }
             JOptionPane.showMessageDialog(this,"Success");
         }
     }//GEN-LAST:event_btSaveDataActionPerformed
@@ -170,16 +178,33 @@ public class App extends javax.swing.JFrame {
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             
-            entities = FileManager.LoadData(selectedFile.getAbsolutePath());
+            try {
+                entities = FileManager.LoadData(selectedFile.getAbsolutePath());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             if(entities.customers == null)
+            {
                 entities.customers = new ArrayList<Customer>();
+            }else{
+                Helper.shuffleArray(entities.customers);
+            }
             
-            if(entities.orderings == null)
+            if(entities.orderings == null){
                 entities.orderings = new ArrayList<Ordering>();
+            }else{
+                 Helper.shuffleArray(entities.orderings);
+            }
             
-            if(entities.products == null)
-                entities.products = new ArrayList<Product>();
+            if(entities.products == null){
+                 entities.products = new ArrayList<Product>();
+                
+            }else{
+                 Helper.shuffleArray(entities.products);
+//                  entities.products = new ArrayList<Product>(entities.products.subList(0, 2));
+            }
+               
             
             JOptionPane.showMessageDialog(this,"Success");
         }
