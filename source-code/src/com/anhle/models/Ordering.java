@@ -19,30 +19,15 @@ public class Ordering implements Comparable<Object> {
     public Ordering(){
         
     }
+    
+    public String getCombineCode(){
+        return pcode + ccode;
+    }
 
     @Override
     public int compareTo(Object other) {
-        
         Ordering orderOther = (Ordering)other;
-        
-        int pCodeCompareResult = Helper.compareString(this.pcode, orderOther.pcode);
-        int cCodeCompareResult = Helper.compareString(this.ccode, orderOther.ccode);
-        
-       if( pCodeCompareResult== CompareResult.LESS && cCodeCompareResult == CompareResult.LESS){
-           return CompareResult.LESS;
-           
-       }else if(pCodeCompareResult == CompareResult.GREATER && cCodeCompareResult == CompareResult.GREATER){
-           return CompareResult.GREATER;
-           
-       }else if(pCodeCompareResult == CompareResult.GREATER && cCodeCompareResult == CompareResult.LESS){
-           return CompareResult.GREATER;
-           
-       }else if(pCodeCompareResult == CompareResult.LESS && cCodeCompareResult == CompareResult.GREATER){
-           return CompareResult.LESS;
-           
-       }else{
-           return CompareResult.EQUAL;
-       }
+        return Helper.compareString(this.getCombineCode(), orderOther.getCombineCode());
     }
 
 }
