@@ -113,51 +113,33 @@ public class Helper {
     }
     
     public static Customer getCustomerByCode(ArrayList<Customer> customers,String code){
-        for(Customer cus : customers){
-            if(cus.ccode != code) 
-                continue;
-            
-            return cus;
-        }
-        return null;
+        int result = Helper.binarysreach(customers,new Customer(code));
+        
+        if(result == -1) return null;
+        
+        return customers.get(result);
+
     }
     
     public static int getIndexCustomerByCode(ArrayList<Customer> customers,String code){
-        int i = -1;
-        for(Customer cus : customers){
-            i++;
-            if(cus.ccode != code)
-                continue;
-            
-            return i;
-        }
-        return -1;
+        int result = Helper.binarysreach(customers,new Customer(code));
+        
+        return result;
     }
     
     public static Product getProductByCode(ArrayList<Product> products,String code){
-        for(Product prod : products){
-            if(prod.pcode != code) 
-                continue;
-            
-            return prod;
-        }
-        return null;
+        int result = Helper.binarysreach(products,new Product(code));
+        
+        if(result == -1) return null;
+        
+        return products.get(result);
+
     }
     
     public static int getIndexProductByCode(ArrayList<Product> products,String code){
-        int i = -1;
-        for(Product prod : products){
-            i++;
-            if(prod.pcode != code) 
-                continue;
-            
-            return i;
-        }
-        return -1;
+        int result = Helper.binarysreach(products,new Product(code));
+        
+        return result;
     }
-
-
-
-
 }
   
