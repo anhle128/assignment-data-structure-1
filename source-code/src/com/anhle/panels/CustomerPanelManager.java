@@ -241,6 +241,7 @@ public class CustomerPanelManager extends javax.swing.JPanel {
         int result = Helper.binarysreach(entities.customers, new Customer(code));
         if(result != -1){
             entities.customers.remove(result);
+            loadDataToTable();
             JOptionPane.showMessageDialog(this,"success");
         }else{
             JOptionPane.showMessageDialog(this,"can't find production");

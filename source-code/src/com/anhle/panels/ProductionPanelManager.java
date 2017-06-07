@@ -269,6 +269,7 @@ public class ProductionPanelManager extends javax.swing.JPanel {
         int result = Helper.binarysreach(entities.products, new Product(code));
         if(result != -1){
             entities.products.remove(result);
+            loadDataToTable();
             JOptionPane.showMessageDialog(this,"success");
         }else{
             JOptionPane.showMessageDialog(this,"can't find production");

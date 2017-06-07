@@ -26,8 +26,6 @@ public class Helper {
         if(left >= right) {
             return;
         }
-        
-//        System.out.println("size: "+array.size() + " - left: " + left + " - right: " + right);
 
         T pivot = array.get((left + right)/2);
         int index = partition(array, left, right,pivot);
@@ -63,24 +61,24 @@ public class Helper {
     }
     
     private static <T> int realBinarysreach(ArrayList<T> array, T fakeDataWithCode, int left, int right){
-        
-        System.out.println("size: "+array.size() + " - left: " + left + " - right: " + right);
          
         if(left > right){
             return -1;
         }
         
         int middle = (left + right)/2;
-        System.out.println("middle: " + middle);
+        
         int compareResult = ((Comparable)array.get(middle)).compareTo(fakeDataWithCode);
         
         if(compareResult == CompareResult.EQUAL){
             return middle;
+            
         }else if(compareResult == CompareResult.GREATER){
             return realBinarysreach(array, fakeDataWithCode, left, middle -1);
             
         }else{
             return realBinarysreach(array, fakeDataWithCode, middle + 1, right);
+            
         }
     }
     
