@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="dist/assignment-anhle.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/mac/Desktop/fpt-greenwich/data-structure/assignment-data-structure-1/libraries/gson-2.8.0.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
